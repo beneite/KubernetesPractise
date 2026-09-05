@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: first-pod
+  labels:
+    app: myapp-qa
+    tier: backend
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
