@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp-qa
+    tier: backend
+    env: qa
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: myapp-qa
+
+  template:
+    metadata:
+      labels:
+        app: myapp-qa
+        tier: backend
+        env: qa
+
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx

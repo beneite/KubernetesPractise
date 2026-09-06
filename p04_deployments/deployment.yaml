@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    app: myapp-staging
+    tier: backend
+    env: staging
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp-staging
+  template:
+    metadata:
+      labels:
+        app: myapp-staging
+        tier: backend
+        env: staging
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
