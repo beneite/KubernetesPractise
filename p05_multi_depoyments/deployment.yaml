@@ -1,0 +1,66 @@
+# ============================
+# Demo env Deployment
+# ============================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-demo-deployment
+  labels:
+    app: myapp-demo
+    tier: backend
+    env: demo
+
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: myapp-demo
+
+  template:
+    metadata:
+      labels:
+        app: myapp-demo
+        tier: backend
+        env: demo
+
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+
+---
+# ============================
+# Prod env Deployment
+# ============================
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-prod-deployment
+  labels:
+    app: myapp-prod
+    tier: backend
+    env: prod
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: myapp-prod
+
+  template:
+    metadata:
+      labels:
+        app: myapp-prod
+        tier: backend
+        env: prod
+
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
